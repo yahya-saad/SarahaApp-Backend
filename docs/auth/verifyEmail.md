@@ -3,6 +3,7 @@
 There is a link sent to user email when signing up which is to confirm the account and update the `isConfirmed` status to `true`
 
 **URL** : `/api/auth/verify-email/:verifyToken`
+
 **METHOD** : `GET`
 
 #### Success Response:

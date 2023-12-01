@@ -138,7 +138,7 @@ export const generateQrcode = asyncHandler(async (req, res, next) => {
   const userName = req.currentUser.userName;
   const url = `${req.protocol}://${req.headers.host}/api/message/anonymous/${userName}`;
 
-  const qrcode = await QRCode.toDataURL({ url });
+  const qrcode = await QRCode.toDataURL(url);
 
   return res.status(200).json({
     status: httpStatusText.SUCCESS,

@@ -1,7 +1,9 @@
 # All Received Messages
 
 **URL** : `/api/message/received`
+
 **METHOD** : `GET`
+
 **Auth required** : YES
 
 #### Headers:

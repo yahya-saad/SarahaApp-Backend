@@ -3,7 +3,9 @@
 reset to default profile picture
 
 **URL** : `/api/user/profile-pic`
+
 **METHOD** : `DELETE`
+
 **Auth required** : YES
 
 #### Headers:

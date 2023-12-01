@@ -1,6 +1,7 @@
 # Send Password Reset Link
 
 **URL** : `/api/auth/password-reset`
+
 **METHOD** : `POST`
 
 #### Body:

@@ -19,10 +19,18 @@ const appRouter = (app, express) => {
   // User
   app.use("/api/user", userRouter);
 
-  app.get("/api/ping", (_, response) => {
-    response.send(
+  app.get("/api/ping", (_, res) => {
+    res.send(
       `<h1><a href="https://www.youtube.com/watch?v=NQnKicJiIN8" target="_blank" ><center>Pong</center></a></h1>`
     );
+  });
+
+  app.get("/", (_, res) => {
+    res.json({
+      status: "success",
+      message:
+        "Welcome to Saraha App! Explore our API by using the Postman collection available in the repository.",
+    });
   });
 
   // Not found

@@ -1,6 +1,7 @@
 # Login
 
 **URL** : `/api/auth/login`
+
 **METHOD** : `POST`
 
 #### Body:

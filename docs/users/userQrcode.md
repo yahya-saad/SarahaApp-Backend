@@ -3,7 +3,9 @@
 Generate Qrcode to send message to current user
 
 **URL** : `/api/user/qrcode`
+
 **METHOD** : `GET`
+
 **Auth required** : YES
 
 #### Headers:

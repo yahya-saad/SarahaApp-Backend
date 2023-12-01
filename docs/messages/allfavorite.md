@@ -1,7 +1,9 @@
 # All Favorite Messages
 
 **URL** : `/api/message/favorite`
+
 **METHOD** : `GET`
+
 **Auth required** : YES
 
 #### Headers:

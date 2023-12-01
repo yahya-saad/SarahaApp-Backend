@@ -3,7 +3,9 @@
 Sending message to specific user
 
 **URL** : `/api/message/:userName`
+
 **METHOD** : `POST`
+
 **Auth required** : YES
 
 #### Headers:
@@ -28,22 +30,20 @@ Sending message to specific user
 
 ```Json
 {
-    {
-    "status": "success",
-    "message": "Message Sent Successfully",
-    "data": {
-        "message": {
-            "_id": "6567a21b2ab23b4fd98583cd",
-            "content": "How are you today ?",
-            "senderUser": "656792084cd8dd1ef2501489",
-            "receiverUser": "656791e84cd8dd1ef2501483",
-            "isFavourite": false,
-            "createdAt": "2023-11-30T20:42:03.435Z",
-            "updatedAt": "2023-11-30T20:42:03.435Z",
-            "__v": 0
+  "status": "success",
+  "message": "Message Sent Successfully",
+  "data": {
+      "message": {
+          "_id": "6567a21b2ab23b4fd98583cd",
+          "content": "How are you today ?",
+          "senderUser": "656792084cd8dd1ef2501489",
+          "receiverUser": "656791e84cd8dd1ef2501483",
+          "isFavourite": false,
+          "createdAt": "2023-11-30T20:42:03.435Z",
+          "updatedAt": "2023-11-30T20:42:03.435Z",
+          "__v": 0
         }
     }
-}
 }
 ```
 

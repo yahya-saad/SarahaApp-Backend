@@ -1,7 +1,9 @@
 # All Sent Messages
 
 **URL** : `/api/message/sent`
+
 **METHOD** : `GET`
+
 **Auth required** : YES
 
 #### Headers:

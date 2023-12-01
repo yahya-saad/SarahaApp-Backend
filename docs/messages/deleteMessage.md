@@ -1,7 +1,9 @@
 # Delete Message
 
 **URL** : `/api/message/:messageId`
+
 **METHOD** : `DELETE`
+
 **Auth required** : YES
 
 #### Headers:

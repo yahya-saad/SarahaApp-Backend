@@ -1,0 +1,612 @@
+{
+	"info": {
+		"_postman_id": "b0a2993c-7006-4b56-bdc2-3908e2c1ddda",
+		"name": "SarahaApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "23502967"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\":\"user3\",\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/auth/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Email",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/auth//verify-email/:verifyToken",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"",
+								"verify-email",
+								":verifyToken"
+							],
+							"variable": [
+								{
+									"key": "verifyToken",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InloeWFtYXN0ZXJAZ21haWwuY29tIiwiaWF0IjoxNzAxMTc0NTIxLCJleHAiOjE3MDExNzUxMjF9.IAHYDMR5fFrXCMMEqngedy0hedG7tYhljczDvN6VoiU"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const token = pm.response.json().data.token;\r",
+									"pm.collectionVariables.set(\"jwt_token\" , token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"user1@email.com\",\r\n    \"password\":\"123456@Aa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Send Password Reset Link",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"yhyamaster@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/auth/password-reset"
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"password\":\"123456@Aa\", \r\n \"confirmPassword\":\"123456@Aa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/auth/password-reset/:token",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"password-reset",
+								":token"
+							],
+							"variable": [
+								{
+									"key": "token",
+									"value": "656792084cd8dd1ef2501489/4a518525"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "Send Message (Auth)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Auth",
+								"value": "{{bearer}}__{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"sama3leko ya user 2 ana a55555o\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/message/user2"
+					},
+					"response": []
+				},
+				{
+					"name": "Send Message (Unauth)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"hhhhhhhhhhhhhhhhh\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/message/anonymous/yhya101"
+					},
+					"response": []
+				},
+				{
+					"name": "All Sent",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth",
+								"value": "{{bearer}}__{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/message/sent?limit=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"message",
+								"sent"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Received",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth",
+								"value": "{{bearer}}__{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/message/received?sort=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"message",
+								"received"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Favorite Messages",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth",
+								"value": "{{bearer}}__{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/message/favorite?sort=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"message",
+								"favorite"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Specific Message",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth",
+								"value": "{{bearer}}__{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/message/:messageId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"message",
+								":messageId"
+							],
+							"variable": [
+								{
+									"key": "messageId",
+									"value": "65685f59642f597e1e4046af"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Message",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "auth",
+								"value": "{{bearer}}__{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/message/:messageId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"message",
+								":messageId"
+							],
+							"variable": [
+								{
+									"key": "messageId",
+									"value": "656792fd4cd8dd1ef25014a7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Toggle Favorite State",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "auth",
+								"value": "{{bearer}}__{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/message/:messageId/favorite",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"message",
+								":messageId",
+								"favorite"
+							],
+							"variable": [
+								{
+									"key": "messageId",
+									"value": "65652978462d3d2fc7f7d7ae"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Preview Picture",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/uploads/:profilePic",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"uploads",
+								":profilePic"
+							],
+							"variable": [
+								{
+									"key": "profilePic",
+									"value": "fe4d6efc9da5e5f0f76a__07.jpg"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Profile Picture",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "auth",
+								"value": "{{bearer}}__{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profilePic",
+									"type": "file",
+									"src": "/C:/Users/PC/Downloads/profilePic/08.jpg"
+								}
+							]
+						},
+						"url": "{{base_url}}/api/user/profile-pic"
+					},
+					"response": []
+				},
+				{
+					"name": "Profile Picture",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Auth",
+								"value": "{{bearer}}__{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/api/user/profile-pic"
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "auth",
+								"value": "{{bearer}}__{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"123456\",\r\n    \"newPassword\":\"123456@Aa\",\r\n    \"confirmPassword\":\"123456@Aa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{base_url}}/api/user/password"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "auth",
+								"value": "{{bearer}}__{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/api/user/"
+					},
+					"response": []
+				},
+				{
+					"name": "Current User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth",
+								"value": "{{bearer}}__{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/api/user/"
+					},
+					"response": []
+				},
+				{
+					"name": "User QRCode",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "auth",
+								"value": "{{bearer}}__{{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": "{{base_url}}/api/user/qrcode"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{base_url}}/api/ping"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://saraha-backend.onrender.com",
+			"type": "string"
+		},
+		{
+			"key": "jwt_token",
+			"value": ""
+		},
+		{
+			"key": "bearer",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

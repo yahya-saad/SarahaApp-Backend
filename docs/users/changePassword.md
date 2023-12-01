@@ -1,7 +1,9 @@
 # Update profile Picture
 
 **URL** : `/api/user/password`
+
 **METHOD** : `PATCH`
+
 **Auth required** : YES
 
 #### Headers:

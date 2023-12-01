@@ -3,7 +3,9 @@
 Show current logged in user details
 
 **URL** : `/api/user/`
+
 **METHOD** : `GET`
+
 **Auth required** : YES
 
 #### Headers:

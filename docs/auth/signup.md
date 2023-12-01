@@ -1,6 +1,7 @@
 # Signup
 
 **URL** : `/api/auth/signup`
+
 **METHOD** : `POST`
 
 #### Body:

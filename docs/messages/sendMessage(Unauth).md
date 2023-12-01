@@ -3,7 +3,9 @@
 Sending message to specific user
 
 **URL** : `/api/message/anonymous/:userName`
+
 **METHOD** : `POST`
+
 **Auth required** : NO
 
 #### Body:
@@ -20,7 +22,6 @@ Sending message to specific user
 
 ```Json
 {
-    {
     "status": "success",
     "message": "Message Sent Successfully",
     "data": {
@@ -36,7 +37,7 @@ Sending message to specific user
         }
     }
 }
-}
+
 ```
 
 #### Fail Response:

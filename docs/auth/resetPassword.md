@@ -1,6 +1,7 @@
 # Reset Password
 
 **URL** : `/api/auth/password-reset/:token`
+
 **METHOD** : `POST`
 
 #### Body:

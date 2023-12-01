@@ -3,7 +3,9 @@
 if message favorite status = `true` becomes `false` and vice versa
 
 **URL** : `api/message/:messageId/favorite`
+
 **METHOD** : `PATCH`
+
 **Auth required** : YES
 
 #### Headers:
@@ -58,6 +60,16 @@ if message favorite status = `true` becomes `false` and vice versa
 
 #### Fail Response:
 
+**code** : **`400`**
+
+```json
+{
+  "status": "fail",
+  "code": 401,
+  "message": "Invalid message id"
+}
+```
+
 **code** : **`401`**
 
 ```json
@@ -73,6 +85,16 @@ if message favorite status = `true` becomes `false` and vice versa
   "status": "fail",
   "code": 401,
   "message": " Token Is Required"
+}
+```
+
+**code** : **`403`**
+
+```json
+{
+  "status": "fail",
+  "code": 403,
+  "message": "Unauthorized to toggle this message"
 }
 ```
 
